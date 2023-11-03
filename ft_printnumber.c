@@ -1,47 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_printnumber.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vivaccar <vivaccar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 12:32:55 by vivaccar          #+#    #+#             */
-/*   Updated: 2023/11/03 15:30:20 by vivaccar         ###   ########.fr       */
+/*   Created: 2023/11/02 13:35:59 by vivaccar          #+#    #+#             */
+/*   Updated: 2023/11/02 17:20:21 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf(const char *s, ...)
+int	ft_printnumber(int n)
 {
-	va_list	ap;
-	int		count;
+	char	*nbr;
+	int		size;
 
-	va_start(ap, s);
-	count = 0;
-	while (*s)
-	{
-		if (*s == '%')
-		{
-			s++;
-			count += print_type(*s, ap);
-		}
-		else
-			count += write(1, s, 1);
-		s++;
-	}
-	return (count);
+	size = 0;
+	nbr = ft_itoa(n);
+	size = ft_strlen(nbr);
+	ft_putstr(nbr);
+	free(nbr);
+	return (size);
 }
-/*#include <stdio.h>
-
- int	main(void)
-{
-	char	*c = "vinicius";
-	int		i;
-	
-	i = 0;
-	//i = ft_printf("Ola %s.", c);
-	//ft_printf("%i", i);
-	printf("%s\n", c);
-	printf("%s\n", *c);
-} */

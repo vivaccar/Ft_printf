@@ -1,47 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_print_ptr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vivaccar <vivaccar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 12:32:55 by vivaccar          #+#    #+#             */
-/*   Updated: 2023/11/03 15:30:20 by vivaccar         ###   ########.fr       */
+/*   Created: 2023/11/02 19:55:08 by vivaccar          #+#    #+#             */
+/*   Updated: 2023/11/03 15:31:46 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf(const char *s, ...)
+int	ft_print_ptr(void *ptr)
 {
-	va_list	ap;
-	int		count;
+	int					count;
+	unsigned long long	n;
 
-	va_start(ap, s);
+	if (!ptr)
+		return (write (1, "(nil)", 5));
 	count = 0;
-	while (*s)
-	{
-		if (*s == '%')
-		{
-			s++;
-			count += print_type(*s, ap);
-		}
-		else
-			count += write(1, s, 1);
-		s++;
-	}
+	n = (unsigned long long)ptr;
+	count += write(1, "0x", 2);
+	count += ft_print_hex(n, 'x');
 	return (count);
 }
-/*#include <stdio.h>
 
- int	main(void)
+/* #include <stdio.h>
+int	main(void)
 {
-	char	*c = "vinicius";
-	int		i;
-	
-	i = 0;
-	//i = ft_printf("Ola %s.", c);
-	//ft_printf("%i", i);
-	printf("%s\n", c);
-	printf("%s\n", *c);
+	char	*ptr;
+	ptr = "ola";
+	ft_print_ptr(0);
+	printf("\n%p", (void *)0);
 } */
