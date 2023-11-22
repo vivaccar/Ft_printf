@@ -11,7 +11,7 @@ va_start, va_arg, va_copy, va_end
 
 ## Skills
 ### String Manipulation in C:
-When recreating the printf function, you will need to handle formatted strings by interpreting format characters (e.g., %d, %s, %f) and replacing them with the corresponding values. This involves careful manipulation of strings in C, including copying, concatenation, and appropriate formatting.
+When recreating the printf function, you will need to handle formatted strings by interpreting format characters (%d, %i, %c %s, %p, %h, %H) and replacing them with the corresponding values. This involves careful manipulation of strings in C, including copying, concatenation, and appropriate formatting.
 
 ### Pointers and Dynamic Memory Allocation:
 The printf function needs to deal with arguments of various types. This requires the use of pointers to access values passed as arguments. Additionally, you may need to dynamically allocate memory to temporarily store formatted strings before printing them.
